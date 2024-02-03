@@ -22,8 +22,7 @@ jobs:
 
       - name: Install AWS CLI
         run: |
-          sudo apt-get install -y python3-pip
-          pip3 install awscli
+          npm install -g aws-cli
 
       - name: Configure AWS Credentials
         run: |
