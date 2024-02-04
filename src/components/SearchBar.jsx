@@ -43,24 +43,7 @@ const SearchBar = ({ onResult }) => {
         }
     };
 
-    const handleBookRoom = async () => {
-        if (!checkInDate || !checkOutDate || !selectedRoomType) {
-            console.error('Please select check-in date, check-out date, and room type.');
-            return;
-        }
 
-        try {
-            await axios.post('api/reservations', {
-                checkInDate: checkInDate,
-                checkOutDate: checkOutDate,
-                roomType: selectedRoomType.value,
-            });
-
-            setBookingDone(true);
-        } catch (error) {
-            console.error('Error making reservation:', error);
-        }
-    };
 
     return (
         <Stack spacing={2} className="search-bar">

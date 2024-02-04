@@ -8,10 +8,10 @@ import axios from "../utils/axios";
 import WelcomeMessage from "../components/WelcomeMessage";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { Stack } from '@mui/system';
 import AvailableRooms from '../components/AvailableRooms';
-import { Typography } from '@mui/material';
 import BookingDoneModal from '../components/BookingDoneModal';
+import { Stack } from '@mui/system';
+
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -31,8 +31,8 @@ export default function Main() {
   const [checkInDate, setCheckInDate] = useState(null);
   const [checkOutDate, setCheckOutDate] = useState(null);
   const [totalCost, setTotalCost] = useState(0);
-  const [numberOfNights, setnumberOfNights] = useState(null)
-  const [reservationDOne, setReservationDone] = useState(false)
+  const [numberOfNights, setNumberOfNights] = useState(null);  // Corrected the state name
+  const [reservationDone, setReservationDone] = useState(false);  // Corrected the state name
 
   const handleModalClose = () => {
     setReservationDone(false);
@@ -43,7 +43,7 @@ export default function Main() {
       try {
         const response = await axios.get('/api/customers/get-profile');
         const userData = response.data;
-        console.log(userData)
+        console.log(userData);
         setUser({
           username: userData.firstname || 'User',
         });
@@ -56,7 +56,6 @@ export default function Main() {
   }, []);
 
   useEffect(() => {
-
     const calculateTotalCost = () => {
       if (!checkInDate || !checkOutDate || availableRooms.length === 0) {
         setTotalCost(0);
@@ -69,7 +68,6 @@ export default function Main() {
       setTotalCost(totalCost);
     };
 
-
     calculateTotalCost();
   }, [checkInDate, checkOutDate, availableRooms]);
 
@@ -81,30 +79,26 @@ export default function Main() {
       return;
     }
 
-
-    console.log(numberOfNights)
-    const totalCost = numberOfNights * price;
-
+   // const totalCost = numberOfNights * price;
 
     try {
       const response = await axios.post('/api/reservations', { reservation: { room_id: roomId, checkin: checkInDate, checkout: checkOutDate, room_price: numberOfNights * price } });
       const reservationData = response.data;
-      setReservationDone(true)
-
+      console.log(reservationData);
+      setReservationDone(true);
     } catch (error) {
       console.error('User data fetching error:', error);
     }
 
     setTotalCost(totalCost);
-
   }
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Header />
       <Grid container spacing={2}>
         <Grid item xs={12} md={8}  >
           <Item style={{
-
             backgroundImage: `url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2VhJTIwYmVhY2h8ZW58MHx8MHx8fDA%3D')`,
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
@@ -128,15 +122,13 @@ export default function Main() {
               setCheckInDate(data.checkInDate);
               setCheckOutDate(data.checkOutDate);
               const numberOfNights = Math.ceil((new Date(data.checkOutDate) - new Date(data.checkInDate)) / (1000 * 60 * 60 * 24));
-              setnumberOfNights(numberOfNights);
-
+              setNumberOfNights(numberOfNights);
             }} />
           </Item>
         </Grid>
         <Grid item xs={12} md={8}>
           <Item style={{
             backgroundColor: '#AAA9AD',
-
           }}>
             <Item style={{
               display: 'flex',
@@ -157,9 +149,7 @@ export default function Main() {
                   </p>
                 </div>
               </Stack>
-
             </Item>
-
 
             <Item style={{
               display: 'flex',
@@ -194,8 +184,6 @@ export default function Main() {
               alignItems: 'center',
               borderRadius: "15px"
             }}>
-
-
               <h3>Queen Rooms</h3>
               <p>
                 Sea view room with Experience luxury at its finest in our Queen rooms. Indulge in
@@ -212,11 +200,10 @@ export default function Main() {
             day={numberOfNights}
             onBook={onBook}
           />
-          <BookingDoneModal isOpen={reservationDOne}  onRequestClose={handleModalClose} />
+          <BookingDoneModal isOpen={reservationDone} onRequestClose={handleModalClose} />
         </Grid>
       </Grid>
       <Footer />
     </Box>
-
   );
-} 
+}

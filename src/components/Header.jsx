@@ -8,7 +8,7 @@ import Menu from '@mui/material/Menu';
 import Avatar from '@mui/material/Avatar';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import { Link, useNavigate, useLocation, Navigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation} from 'react-router-dom';
 import authService from "../auth/authService"
 const settings = ["Dashboard",'Profile', 'Reservations', 'Logout'];
 
