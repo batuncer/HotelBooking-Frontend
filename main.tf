@@ -2,12 +2,12 @@ provider "aws" {
   region = "us-west-2"
 }
 
-resource "aws_s3_bucket" "hotelmain" {
-  bucket = "hotelmain"
+resource "aws_s3_bucket" "hotelmainterraform" {
+  bucket = "hotelmainterraform"
 }
 
-resource "aws_s3_bucket_policy" "hotelmain_policy" {
-  bucket = aws_s3_bucket.hotelmain.id
+resource "aws_s3_bucket_policy" "hotelmainterraform_policy" {
+  bucket = aws_s3_bucket.hotelmainterraform.id
 
   policy = <<POLICY
 {
@@ -18,7 +18,7 @@ resource "aws_s3_bucket_policy" "hotelmain_policy" {
           "Effect": "Allow",
           "Principal": "*",
           "Action": "s3:GetObject",
-          "Resource": "arn:aws:s3:::hotelmain/*"
+          "Resource": "arn:aws:s3:::hotelmainterraform/*"
       }
   ]
 }
