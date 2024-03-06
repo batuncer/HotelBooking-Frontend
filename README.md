@@ -14,6 +14,7 @@ This project is a hotel room booking application where users can view available 
 - **Express.js**: A web application framework for Node.js used for building RESTful APIs.
 - **PostgreSQL**: A powerful, open-source relational database system.
 - **RESTful API**: Used for communication between the front end and back end, following REST architectural principles.
+- **Backend-github**:https://github.com/batuncer/HotelBooking
 
 ### Deployment and Infrastructure
 - **Amazon Web Services (AWS)**: Cloud computing platform for hosting the application.
@@ -32,6 +33,7 @@ The application is deployed on Amazon Web Services (AWS) using the following ste
 2. **Docker Containerization**: Containerize the application using Docker for easy deployment and scalability.
 3. **Continuous Integration/Continuous Deployment (CI/CD)**: Implement CI/CD pipelines to automate the build, test, and deployment processes.
 4. **Monitoring and Logging**: Utilize AWS CloudWatch for monitoring application performance and logging.
+5. **URL**: http://hotelmain.s3-website-us-west-2.amazonaws.com
 
 ## Setup Instructions
 To set up the project locally, follow these steps:
