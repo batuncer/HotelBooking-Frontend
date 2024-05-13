@@ -1,7 +1,7 @@
 import axios from "axios";
 // config
 const HOST_API_KEY =
-  "http://ec2-18-236-176-123.us-west-2.compute.amazonaws.com:8080/";
+  "https://hotel-booking-ivory.vercel.app/";
 
 // ----------------------------------------------------------------------
 
