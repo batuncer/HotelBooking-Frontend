@@ -26,7 +26,6 @@ This project is a hotel room booking application where users can view available 
 - **Room Availability**: Real-time checking of room availability.
 - **JWT Authentication**: Secure authentication mechanism using JSON Web Tokens.
 - **Responsive Design**: Utilizes Material-UI for a responsive and visually appealing design across devices.
-
 ## Deployment
 The application is deployed on Amazon Web Services (AWS) using the following steps:
 1. **Infrastructure Setup**: Use Terraform to provision necessary AWS resources such as EC2 instances, RDS (Relational Database Service), and load balancers.
